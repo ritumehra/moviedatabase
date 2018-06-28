@@ -1,0 +1,6 @@
+indexes:
+- kind: Film
+  ancestor: yes
+  properties:
+  - name: date
+    direction: desc
