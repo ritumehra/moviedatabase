@@ -7,6 +7,7 @@ from google.appengine.ext import ndb
 import jinja2
 import webapp2
 
+import mdp_queries
 
 import cgi
 
@@ -23,14 +24,12 @@ def film_key(film_name=DEFAULT_FILM_KEY):
     """
     return ndb.Key('Film', film_name)
 
-class Film(ndb.Model):
-    """Models an individual Guestbook entry with content and date."""
-    content = ndb.StringProperty()
-    date = ndb.DateTimeProperty(auto_now_add=True)
 
 
 class MainPage(webapp2.RequestHandler):
     MOVIES_PER_PAGE = 20
+
+    mdp_queries.insert_into_entity_film()
 
     def get(self):
 
